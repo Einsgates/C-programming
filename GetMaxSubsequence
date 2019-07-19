@@ -1,0 +1,27 @@
+/*This program is to obtain the maxSubsequence of a array*/
+#include <stdio.h>
+int i;
+int ThisSum=0,MaxSum=0;
+int online(int a[],int n);
+int main()
+{
+	int i,n;
+	scanf("%d",&n);
+	int a[n];
+	for(i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	online(a,n);
+	printf("%d",MaxSum);
+}
+int online(int a[],int n)
+{
+	for(i=0;i<n;i++){
+		ThisSum+=a[i];
+		if(ThisSum>MaxSum)
+			MaxSum=ThisSum;
+		else if(ThisSum<0)
+			ThisSum=0;
+	}
+	return MaxSum;
+}
